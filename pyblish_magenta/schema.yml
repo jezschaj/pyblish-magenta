@@ -1,0 +1,72 @@
+# Ensure the default settings for the templates
+defaults:
+    anchor: 'start'
+    mode: 'relaxed'
+
+# Set some references that we don't want to parse on its own.
+# It's solely used to define a reference for a template, not a template.
+# This is used to simplify the patterns in the templates.
+references:
+    root: '{root:(^[\w]*:*[\/]?(?:(?:(?<=[\/])[^\/]+[\/]?)*))}'
+    shot_asset: '{@root}/asset/shots/{container}/{asset}'
+    model_asset: '{@root}/asset/model/{container}/{asset}'
+
+# The paths of our project
+paths:
+
+    # Model/Assets
+# --------------
+
+# Concept Art
+conceptArt.dev:
+    pattern: '{@root}/dev/conceptArt/{container}/{asset}'
+conceptArt.asset:
+    pattern: '{@model_asset}/conceptArt'
+
+# Modeling
+model.dev:
+    pattern: '{@root}/dev/modeling/{container}/{asset}'
+model.asset:
+    pattern: '{@model_asset}/geo'
+
+# Rigging
+rig.dev:
+    pattern: '{@root}/dev/rigging/{container}/{asset}'
+rig.asset:
+    pattern: '{@model_asset}/rig'
+
+# LookDev
+lookdev.dev:
+    pattern: '{@root}/dev/lookdev/{container}/{asset}'
+lookdev.asset:
+    pattern: '{@model_asset}/lookdev'
+
+
+# Shots
+# ------
+
+# Animation
+animation.dev:
+    pattern: '{@root}/dev/animation/{container}/{asset}'
+animation.asset:
+    pattern: '{@shot_asset}/anim'
+animation.playblast:
+    pattern: '{@shot_asset}/renders/playblast'
+
+# Lighting
+lighting.dev:
+    pattern: '{@root}/dev/lighting/{container}/{asset}'
+lighting.asset:
+    pattern: '{@shot_asset}/renders/3D'
+
+# Compositing
+comp.dev:
+    pattern: '{@root}/dev/comp/{container}/{asset}'
+comp.asset:
+    pattern: '{@shot_asset}/renders/comp'
+
+# FX
+comp.dev:
+    pattern: '{@root}/dev/fx/{container}/{asset}'
+comp.asset:
+    pattern: '{@shot_asset}/{asset}/fx'
